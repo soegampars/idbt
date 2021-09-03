@@ -1,4 +1,4 @@
-# District-level data
+# Data tingkat kabupaten/kota
 
-Data available:
-- Labour force by educational attainment (Seri Keadaan Angkatan Kerja)
+Data tersedia:
+- Jumlah angkatan kerja berdasarkan pendidikan tertinggi yang ditamatkan (Seri Keadaan Angkatan Kerja)
