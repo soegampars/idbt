@@ -4,7 +4,10 @@ Data tersedia:
 - Jumlah angkatan kerja berdasarkan pendidikan tertinggi yang ditamatkan (Seri Keadaan Angkatan Kerja)
 
 ## Metadata
-| kabkot	    | Full name of the district (Bahasa Indonesia) |
+
+| Variables | Description |
+| ---- | ---- |
+|kabkot | Full name of the district (Bahasa Indonesia) |
 | kabkot_kode	| BPS-assigned district code |
 | prov	      | BPS-assigned province code |
 | year	      | Year of observation |
