@@ -95,9 +95,17 @@ Jangan khawatir jika kamu baru menggunakan GitHub! Berikut langkah-langkah seder
 3. Buka file yang diunduh di komputermu menggunakan aplikasi spreadsheet.
 
 ## Lisensi
-[Tentukan lisensi yang digunakan untuk data ini]
+
+Semua data dalam repositori ini dilisensikan di bawah **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**. 
+
+Ini berarti Anda diperbolehkan untuk mengunduh, menggunakan, memodifikasi, dan mendistribusikan data ini secara bebas, dengan syarat:
+
+1. **Atribusi**: Anda harus memberikan kredit yang sesuai kepada saya sebagai pencipta asli data ini. Mohon cantumkan nama saya dan tautan ke repositori ini dalam setiap penggunaan data.
+2. **Non-Komersial**: Anda tidak diperbolehkan menggunakan data ini untuk tujuan komersial. Artinya, Anda tidak boleh menjual data ini atau menggunakannya dalam proyek yang bertujuan untuk menghasilkan keuntungan.
+
+Untuk informasi lebih lanjut mengenai lisensi ini, Anda dapat mengunjungi [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+
+Jika Anda memiliki pertanyaan terkait penggunaan data ini di luar syarat-syarat di atas, jangan ragu untuk menghubungi saya.
 
 ## Kontak
-Punya pertanyaan atau butuh informasi lebih lanjut? Jangan ragu untuk menghubungi kami di [masukkan informasi kontak di sini].
-
-Selamat mengeksplorasi data! 😊
+Punya pertanyaan atau butuh informasi lebih lanjut? Jangan ragu untuk menghubungi saya.
