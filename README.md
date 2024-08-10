@@ -59,7 +59,7 @@ Silakan gunakan data dalam repositori ini untuk penelitian, publikasi, atau tuju
 
 Jika Anda menggunakan data ini dalam pekerjaan Anda, mohon kutip sebagai berikut:
 
-*Pekerti, I.S. , 2024. econpublicdata_indonesia. Repositori GitHub: https://github.com/soegampars/econpublicdata_indonesia*
+*Pekerti, I.S. , 2024. Inisiatif Data Beneran Terbuka. Repositori GitHub: [https://github.com/soegampars/econpublicdata_indonesia](https://github.com/soegampars/idbt)*
 
 ## Informasi Kontak
 
