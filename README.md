@@ -20,13 +20,7 @@ Proyek ini bertujuan untuk membagikan data mentah dari publikasi Badan Pusat Sta
 
 ## Deskripsi Data
 
-Data yang ada dalam repositori ini meliputi:
-
-- **Nama File 1:** Deskripsi singkat (misalnya, "Berisi data tentang X dari tahun Y hingga Z").
-- **Nama File 2:** Deskripsi singkat (misalnya, "Berisi data tentang A dari studi B").
-- [Tambahkan file lainnya jika diperlukan]
-
-Setiap dataset disediakan dalam format [sebutkan format, misalnya CSV, Excel, JSON, dll.], dan file-file tersebut diatur sedemikian rupa agar mudah ditemukan.
+Setiap dataset disediakan dalam format Excel (.xlsx), dan file-file tersebut diatur sedemikian rupa agar mudah ditemukan.
 
 ### Metadata
 
@@ -53,13 +47,19 @@ Jika Anda ingin mengunduh seluruh dataset:
 Silakan gunakan data dalam repositori ini untuk penelitian, publikasi, atau tujuan akademis lainnya. Mohon perhatikan hal-hal berikut:
 
 - **Jaminan Kualitas:** Data telah diproses dengan cermat, tetapi kami menyarankan pengguna untuk memvalidasi data tersebut agar sesuai dengan kebutuhan spesifik Anda.
-- **Lisensi:** Data ini dibagikan di bawah [sebutkan lisensi, misalnya, MIT License, Creative Commons License, dll.]. Ini berarti Anda bebas menggunakannya, namun mohon untuk memberikan kredit yang sesuai.
+- **Lisensi:** Semua data dalam repositori ini dilisensikan di bawah **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**. Ini berarti Anda diperbolehkan untuk mengunduh, menggunakan, memodifikasi, dan mendistribusikan data ini secara bebas, dengan syarat:
+  - **Atribusi:** Anda harus memberikan kredit yang sesuai kepada saya sebagai pencipta asli data ini. Mohon cantumkan nama saya dan tautan ke repositori ini dalam setiap penggunaan data.
+  - **Non-Komersial:** Anda tidak diperbolehkan menggunakan data ini untuk tujuan komersial. Artinya, Anda tidak boleh menjual data ini atau menggunakannya dalam proyek yang bertujuan untuk menghasilkan keuntungan.
+
+Untuk informasi lebih lanjut mengenai lisensi ini, Anda dapat mengunjungi [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+
+Jika Anda memiliki pertanyaan terkait penggunaan data ini di luar syarat-syarat di atas, jangan ragu untuk menghubungi saya.
 
 ## Cara Mengutip Data Ini
 
 Jika Anda menggunakan data ini dalam pekerjaan Anda, mohon kutip sebagai berikut:
 
-*Pekerti, I.S. , 2024. Inisiatif Data Beneran Terbuka. Repositori GitHub: [https://github.com/soegampars/econpublicdata_indonesia](https://github.com/soegampars/idbt)*
+*Pekerti, I.S. , 2024. Inisiatif Data (Beneran) Terbuka. Repositori GitHub: [https://github.com/soegampars/idbt](https://github.com/soegampars/idbt)*
 
 ## Informasi Kontak
 
@@ -69,4 +69,4 @@ Jika Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, jangan ragu
 - **Email:** immanuelsatya.pekerti@polimi.it
 - **GitHub:** soegampars
 
-Terima kasih atas minat Anda terhadap **econpublicdata_indonesia**. Kami berharap data ini bermanfaat untuk penelitian dan studi Anda!
+Terima kasih atas minat Anda terhadap **Inisiatif Data (Beneran) Terbuka**. Kami berharap data ini bermanfaat untuk penelitian dan studi Anda!
