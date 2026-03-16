@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDBT — Inisiatif Data (Beneran) Terbuka</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>IDBT — Inisiatif Data (Beneran) Terbuka</h1>
+      <p class="subtitle">Akses data statistik Indonesia secara gratis dan terbuka</p>
+    </header>
+
+    <!-- Loading indicator -->
+    <div id="loading">
+      <p>Memuat...</p>
+    </div>
+
+    <!-- Controls (hidden until DuckDB is ready) -->
+    <section id="controls" class="controls" style="display:none;">
+      <div class="control-row">
+        <div class="control-group">
+          <label for="topik">Pilih Topik</label>
+          <select id="topik"></select>
+        </div>
+        <div class="control-group" id="geografi-group" style="display:none;">
+          <label for="geografi">Tingkat Geografi</label>
+          <select id="geografi">
+            <option value="semua">Semua</option>
+            <option value="provinsi">Provinsi</option>
+            <option value="kabupaten_kota">Kabupaten/Kota</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Pilih Indikator</label>
+        <div id="indikator-list" class="checkbox-list">
+          <p class="muted">Pilih topik terlebih dahulu.</p>
+        </div>
+      </div>
+
+      <div class="control-row">
+        <div class="control-group">
+          <label for="tahun-dari">Tahun Dari</label>
+          <input type="number" id="tahun-dari" min="1970" max="2030" value="2010">
+        </div>
+        <div class="control-group">
+          <label for="tahun-sampai">Tahun Sampai</label>
+          <input type="number" id="tahun-sampai" min="1970" max="2030" value="2023">
+        </div>
+      </div>
+
+      <button id="btn-cari" class="btn-primary">Cari Data</button>
+    </section>
+
+    <!-- Results -->
+    <section id="results" style="display:none;">
+      <div class="results-header">
+        <h2>Hasil</h2>
+        <button id="btn-unduh" class="btn-primary">Unduh CSV</button>
+      </div>
+      <div id="table-container"></div>
+    </section>
+
+    <!-- Error / empty state -->
+    <div id="message" style="display:none;"></div>
+
+    <footer>
+      <p>Data bersumber dari publikasi BPS (Badan Pusat Statistik). Proyek ini bersifat open source.</p>
+      <p><a href="https://github.com/soegampars/idbt">github.com/soegampars/idbt</a></p>
+    </footer>
+  </div>
+
+  <!-- DuckDB-WASM -->
+  <script src="https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm/dist/duckdb-browser-blocking.cjs"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
