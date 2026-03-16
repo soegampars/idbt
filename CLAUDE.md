@@ -12,7 +12,7 @@ This is the IDBT (Inisiatif Data Beneran Terbuka) repository — an open data st
 - data/facts/ — Fact Parquet tables (statistical data in long format)
 - seeds/ — CSV source files for regenerating reference tables
 - scripts/ — Python helper scripts (ingest.py, validate.py, init_refs.py, export_csv.py)
-- site/ — GitHub Pages frontend (DuckDB-WASM query interface)
+- docs/ — GitHub Pages frontend (DuckDB-WASM query interface)
 
 ## Schemas
 
