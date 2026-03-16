@@ -1,0 +1,44 @@
+kode_wilayah,nama_wilayah,tingkat,kode_provinsi
+11,Aceh,provinsi,11
+12,Sumatera Utara,provinsi,12
+13,Sumatera Barat,provinsi,13
+14,Riau,provinsi,14
+15,Jambi,provinsi,15
+16,Sumatera Selatan,provinsi,16
+17,Bengkulu,provinsi,17
+18,Lampung,provinsi,18
+19,Kepulauan Bangka Belitung,provinsi,19
+21,Kepulauan Riau,provinsi,21
+31,DKI Jakarta,provinsi,31
+32,Jawa Barat,provinsi,32
+33,Jawa Tengah,provinsi,33
+34,DI Yogyakarta,provinsi,34
+35,Jawa Timur,provinsi,35
+36,Banten,provinsi,36
+51,Bali,provinsi,51
+52,Nusa Tenggara Barat,provinsi,52
+53,Nusa Tenggara Timur,provinsi,53
+61,Kalimantan Barat,provinsi,61
+62,Kalimantan Tengah,provinsi,62
+63,Kalimantan Selatan,provinsi,63
+64,Kalimantan Timur,provinsi,64
+65,Kalimantan Utara,provinsi,65
+71,Sulawesi Utara,provinsi,71
+72,Sulawesi Tengah,provinsi,72
+73,Sulawesi Selatan,provinsi,73
+74,Sulawesi Tenggara,provinsi,74
+75,Gorontalo,provinsi,75
+76,Sulawesi Barat,provinsi,76
+81,Maluku,provinsi,81
+82,Maluku Utara,provinsi,82
+91,Papua,provinsi,91
+92,Papua Barat,provinsi,92
+93,Papua Selatan,provinsi,93
+94,Papua Tengah,provinsi,94
+95,Papua Pegunungan,provinsi,95
+96,Papua Barat Daya,provinsi,96
+3401,Kulon Progo,kabupaten,34
+3402,Bantul,kabupaten,34
+3403,Gunungkidul,kabupaten,34
+3404,Sleman,kabupaten,34
+3471,Kota Yogyakarta,kota,34
