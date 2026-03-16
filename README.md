@@ -1,72 +1,39 @@
-# Inisiatif Data (Beneran) Terbuka
+# IDBT — Inisiatif Data (Beneran) Terbuka
 
-Inisiatif Data (Beneran) Terbuka adalah gerakan yang bertujuan untuk mempermudah akses data yang dapat diakses publik dengan mengolah dan menyajikan ulang dalam bentuk yang lebih mudah digunakan.
+An open data initiative providing free, structured access to Indonesian economic statistics originally published in PDF format by [BPS](https://www.bps.go.id/) (Badan Pusat Statistik / Statistics Indonesia).
 
-## Tentang Repository GitHub Kami
-Repository GitHub kami utamanya digunakan sebagai penyimpanan dataset hasil olahan yang dapat digunakan secara bebas oleh publik dan hosting blog sebagai laman muka yang menyajikan berbagai informasi tentang inisiatif kami dan berita terkait dataset terbaru.
+## What this is
 
-## Daftar Isi
+BPS publishes thousands of statistical tables every year, but most are locked inside PDF documents that are difficult to use programmatically. This repository:
 
-1. [Pendahuluan](#pendahuluan)
-2. [Deskripsi Data](#deskripsi-data)
-3. [Cara Mengakses Data](#cara-mengakses-data)
-4. [Penggunaan Data](#penggunaan-data)
-5. [Cara Mengutip Data Ini](#cara-mengutip-data-ini)
-6. [Informasi Kontak](#informasi-kontak)
+- Extracts and cleans that data into structured Parquet files
+- Provides a browser-based query interface (no downloads or tools required)
+- Lets users select exactly the variables, regions, and years they need
+- Exports clean CSV files ready for analysis in Excel, Stata, R, or Python
 
-## Pendahuluan
+## How data is organised
 
-Proyek ini bertujuan untuk membagikan data mentah dari publikasi Badan Pusat Statistik yang telah diproses terkait ekonomi. Data ini ditujukan untuk digunakan dalam berbagai keperluan penelitian.
+All data follows a consistent long format with geographic or classification keys, linked to reference tables for region names, indicator definitions, and source publications. See `CLAUDE.md` for full schema documentation.
 
-## Deskripsi Data
+## How to access the data
 
-Setiap dataset disediakan dalam format Excel (.xlsx), dan file-file tersebut diatur sedemikian rupa agar mudah ditemukan.
+Visit the GitHub Pages site at `https://[username].github.io/idbt/` to query and download data directly in your browser. No account or software needed.
 
-### Metadata
+## How to contribute
 
-Untuk setiap dataset, kami telah menyertakan file metadata yang menjelaskan:
+If you have access to BPS publications and want to help expand the dataset:
 
-- Variabel/kolom yang termasuk
-- Satuan pengukuran
-- Catatan penting atau hal-hal yang perlu diperhatikan terkait data
+1. Extract the table into a clean CSV (see `inbox/README.md` for format conventions)
+2. Submit a pull request placing your CSV in the `inbox/` folder
+3. Include the source publication details in your PR description
 
-## Cara Mengakses Data
+## Tech stack
 
-Anda dapat mengakses data dengan mengklik nama file di repositori di atas. Jika Anda belum familiar dengan GitHub:
+- **Storage**: Apache Parquet on GitHub
+- **Query engine**: DuckDB-WASM (runs entirely in the browser)
+- **Ingestion**: Python (pandas + pyarrow), managed via Claude Code
+- **Frontend**: Static HTML/JS on GitHub Pages
 
-1. **Melihat File:** Cukup klik pada file apa pun untuk melihat isinya langsung di browser Anda.
-2. **Mengunduh File:** Untuk mengunduh file, klik nama file, lalu klik tombol "Download" di sisi kanan halaman.
+## License
 
-Jika Anda ingin mengunduh seluruh dataset:
-
-- Klik tombol hijau "Code" di dekat bagian atas halaman ini.
-- Pilih "Download ZIP" untuk mengunduh semua file sekaligus.
-
-## Penggunaan Data
-
-Silakan gunakan data dalam repositori ini untuk penelitian, publikasi, atau tujuan akademis lainnya. Mohon perhatikan hal-hal berikut:
-
-- **Jaminan Kualitas:** Data telah diproses dengan cermat, tetapi kami menyarankan pengguna untuk memvalidasi data tersebut agar sesuai dengan kebutuhan spesifik Anda.
-- **Lisensi:** Semua data dalam repositori ini dilisensikan di bawah **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**. Ini berarti Anda diperbolehkan untuk mengunduh, menggunakan, memodifikasi, dan mendistribusikan data ini secara bebas, dengan syarat:
-  - **Atribusi:** Anda harus memberikan kredit yang sesuai kepada saya sebagai pencipta asli data ini. Mohon cantumkan nama saya dan tautan ke repositori ini dalam setiap penggunaan data.
-  - **Non-Komersial:** Anda tidak diperbolehkan menggunakan data ini untuk tujuan komersial. Artinya, Anda tidak boleh menjual data ini atau menggunakannya dalam proyek yang bertujuan untuk menghasilkan keuntungan.
-
-Untuk informasi lebih lanjut mengenai lisensi ini, Anda dapat mengunjungi [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
-
-Jika Anda memiliki pertanyaan terkait penggunaan data ini di luar syarat-syarat di atas, jangan ragu untuk menghubungi saya.
-
-## Cara Mengutip Data Ini
-
-Jika Anda menggunakan data ini dalam pekerjaan Anda, mohon kutip sebagai berikut:
-
-*Pekerti, I.S. , 2024. Inisiatif Data (Beneran) Terbuka. Repositori GitHub: [https://github.com/soegampars/idbt](https://github.com/soegampars/idbt)*
-
-## Informasi Kontak
-
-Jika Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, jangan ragu untuk menghubungi saya:
-
-- **Nama:** Immanuel Satya Pekerti
-- **Email:** immanuelsatya.pekerti@polimi.it
-- **GitHub:** soegampars
-
-Terima kasih atas minat Anda terhadap **Inisiatif Data (Beneran) Terbuka**. Kami berharap data ini bermanfaat untuk penelitian dan studi Anda!
+Data sourced from BPS publications which are public domain under Indonesian law. Code in this repository is MIT licensed.
