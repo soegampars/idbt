@@ -94,7 +94,7 @@ def validate_ref_wilayah(df):
         return
     check_string_dtype(df, "kode_wilayah")
     # tingkat values
-    valid_tingkat = {"provinsi", "kabupaten", "kota"}
+    valid_tingkat = {"nasional", "provinsi", "kabupaten", "kota"}
     actual = set(df["tingkat"].dropna().unique())
     invalid = actual - valid_tingkat
     if invalid:
@@ -139,8 +139,6 @@ def validate_fact(df, path):
         return
     _pass("Key column present (kode_wilayah and/or kbli)")
 
-    key_col = "kode_wilayah" if has_wilayah else "kbli"
-
     # tahun range
     out_of_range = df[(df["tahun"] < 1970) | (df["tahun"] > 2030)]
     if len(out_of_range) > 0:
@@ -154,12 +152,12 @@ def validate_fact(df, path):
     else:
         _fail("nilai is not numeric")
 
-    # Cross-reference: kode_wilayah
+    # Cross-reference: kode_wilayah (only check non-null values)
     if has_wilayah:
         ref_wil = _load_ref("ref_wilayah")
         if ref_wil is not None:
             valid_codes = set(ref_wil["kode_wilayah"].astype(str))
-            actual_codes = set(df["kode_wilayah"].astype(str))
+            actual_codes = set(df["kode_wilayah"].dropna().astype(str))
             invalid = actual_codes - valid_codes
             if invalid:
                 _fail(f"{len(invalid)} kode_wilayah not in ref_wilayah: {sorted(invalid)[:10]}")
@@ -188,13 +186,23 @@ def validate_fact(df, path):
         else:
             _pass("All publikasi_id exist in ref_publikasi")
 
-    # No duplicate rows on (key_col, tahun, indikator_id, publikasi_id)
-    dup_cols = [key_col, "tahun", "indikator_id", "publikasi_id"]
-    dupes = df.duplicated(subset=dup_cols).sum()
-    if dupes > 0:
-        _fail(f"{dupes} duplicate rows on {dup_cols}")
+    # No duplicate rows — check each key subset independently
+    # A fact table may have rows keyed by kbli and rows keyed by kode_wilayah
+    total_dupes = 0
+    if has_kbli:
+        kbli_rows = df[df["kbli"].notna()]
+        if len(kbli_rows) > 0:
+            dup_cols = ["kbli", "tahun", "indikator_id", "publikasi_id"]
+            total_dupes += kbli_rows.duplicated(subset=dup_cols).sum()
+    if has_wilayah:
+        wil_rows = df[df["kode_wilayah"].notna()]
+        if len(wil_rows) > 0:
+            dup_cols = ["kode_wilayah", "tahun", "indikator_id", "publikasi_id"]
+            total_dupes += wil_rows.duplicated(subset=dup_cols).sum()
+    if total_dupes > 0:
+        _fail(f"{total_dupes} duplicate rows found")
     else:
-        _pass(f"No duplicate rows on {dup_cols}")
+        _pass("No duplicate rows")
 
 
 # ---------------------------------------------------------------------------

@@ -25,7 +25,13 @@ async function initDuckDB() {
   const BUNDLES = duckdb.getJsDelivrBundles();
   const bundle = await duckdb.selectBundle(BUNDLES);
 
-  const worker = new Worker(bundle.mainWorker);
+  // Create worker via blob URL to avoid cross-origin restrictions
+  const workerUrl = URL.createObjectURL(
+    new Blob([`importScripts("${bundle.mainWorker}");`], {
+      type: "text/javascript",
+    })
+  );
+  const worker = new Worker(workerUrl);
   const logger = new duckdb.ConsoleLogger();
   db = new duckdb.AsyncDuckDB(logger, worker);
   await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
