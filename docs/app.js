@@ -212,6 +212,20 @@ async function checkHasWilayah(topic) {
   }
 }
 
+// Check if the current fact table has a kbli column
+async function checkHasKbli(topic) {
+  try {
+    const result = await conn.query(
+      `SELECT column_name FROM information_schema.columns
+       WHERE table_name = 'fact_${topic}' AND column_name = 'kbli'`
+    );
+    const rows = arrowToObjects(result);
+    return rows.length > 0;
+  } catch {
+    return false;
+  }
+}
+
 // ============================================================
 // Query Execution
 // ============================================================
@@ -245,48 +259,37 @@ async function runQuery() {
   }
 
   const hasWilayah = await checkHasWilayah(topic);
+  const hasKbli = await checkHasKbli(topic);
 
   // Build the SQL query
   const idList = selectedIds.map((id) => `'${id}'`).join(", ");
   const factTable = `fact_${topic}`;
 
-  // Determine the key column
-  const keyCol = hasWilayah ? "kode_wilayah" : "kbli";
-  const keyLabel = hasWilayah ? "nama_wilayah" : keyCol;
-
-  let selectCols, joins, whereClauses;
-
-  if (hasWilayah) {
-    selectCols = `
+  // The fact table may contain both kode_wilayah rows and kbli rows.
+  // Build a query that shows the appropriate key columns.
+  let selectCols = `
+      f.kode_wilayah,
       w.nama_wilayah,
-      f.tahun,
-      i.nama_id AS indikator,
-      f.nilai,
-      i.satuan`;
-    joins = `
-      LEFT JOIN ref_wilayah w ON f.kode_wilayah = w.kode_wilayah
-      LEFT JOIN ref_indikator i ON f.indikator_id = i.indikator_id`;
-  } else {
-    selectCols = `
       f.kbli,
       f.tahun,
       i.nama_id AS indikator,
       f.nilai,
       i.satuan`;
-    joins = `
-      LEFT JOIN ref_indikator i ON f.indikator_id = i.indikator_id`;
-  }
 
-  whereClauses = [
+  let joins = `
+      LEFT JOIN ref_wilayah w ON f.kode_wilayah = w.kode_wilayah
+      LEFT JOIN ref_indikator i ON f.indikator_id = i.indikator_id`;
+
+  let whereClauses = [
     `f.indikator_id IN (${idList})`,
     `f.tahun BETWEEN ${tahunDari} AND ${tahunSampai}`,
   ];
 
-  // Geography filter (only when the fact table has kode_wilayah)
+  // Geography filter (only applies to rows with kode_wilayah)
   if (hasWilayah && geoFilter === "provinsi") {
-    whereClauses.push(`w.tingkat = 'provinsi'`);
+    whereClauses.push(`(w.tingkat = 'provinsi' OR f.kode_wilayah IS NULL)`);
   } else if (hasWilayah && geoFilter === "kabupaten_kota") {
-    whereClauses.push(`w.tingkat IN ('kabupaten', 'kota')`);
+    whereClauses.push(`(w.tingkat IN ('kabupaten', 'kota') OR f.kode_wilayah IS NULL)`);
   }
 
   const sql = `
@@ -294,7 +297,10 @@ async function runQuery() {
     FROM ${factTable} f
     ${joins}
     WHERE ${whereClauses.join(" AND ")}
-    ORDER BY f.tahun, ${hasWilayah ? "w.nama_wilayah" : "f.kbli"}, i.nama_id
+    ORDER BY f.tahun,
+      COALESCE(w.nama_wilayah, ''),
+      COALESCE(f.kbli, ''),
+      i.nama_id
   `;
 
   try {
